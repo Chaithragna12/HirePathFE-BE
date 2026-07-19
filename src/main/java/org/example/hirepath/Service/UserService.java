@@ -23,7 +23,7 @@ public class UserService {
     public UserEntity userLogin(UserEntity u){
         UserEntity existing=repo.findByemail(u.getEmail());
         if(existing!=null && u.getPassword().equals(existing.getPassword())){
-            return u;
+            return existing;
         }
         return null;
     }
