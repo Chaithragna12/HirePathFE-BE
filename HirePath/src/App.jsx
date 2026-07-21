@@ -9,9 +9,9 @@ import Register from "./pages/Register";
 // import Jobs from "./pages/Jobs";
 // import SavedJobs from "./pages/SavedJobs";
 // import Applications from "./pages/Applications";
-// import Profile from "./pages/Profile";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import Profile from "./pages/Profile.jsx";
+import About from "./pages/About.jsx/index.js";
+import Contact from "./pages/Contact.jsx/index.js";
 
 function App() {
   return (

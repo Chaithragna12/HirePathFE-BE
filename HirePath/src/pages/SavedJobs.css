@@ -1,0 +1,22 @@
+.saved-page {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.saved-page h1 {
+    margin-bottom: 25px;
+}
+
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media screen and (max-width:768px) {
+
+    .saved-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
