@@ -8,13 +8,23 @@ import org.springframework.web.bind.annotation.*;
 public class JobController {
 
     @Autowired
-    private JobService Service;
+    private JobService jobService;
 
     @GetMapping("/jobs")
     public String searchJobs(
-            @RequestParam String keyword,
-            @RequestParam String location) {
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Integer salary
+    ) {
 
-        return Service.getJobs(keyword, location);
+        return jobService.searchJobs(
+                keyword,
+                location,
+                category,
+                salary
+        );
     }
+
+
 }

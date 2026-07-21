@@ -15,14 +15,50 @@ public class JobService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public String getJobs(String keyword, String location) {
+    public String searchJobs(
+            String keyword,
+            String location,
+            String category,
+            Integer salary
+    ) {
 
-        String url = "https://api.adzuna.com/v1/api/jobs/in/search/1"
-                + "?app_id=" + appId
-                + "&app_key=" + appKey
-                + "&what=" + keyword
-                + "&where=" + location;
+        StringBuilder url = new StringBuilder(
+                "https://api.adzuna.com/v1/api/jobs/in/search/1?"
+        );
 
-        return restTemplate.getForObject(url, String.class);
+        url.append("app_id=").append(appId);
+        url.append("&app_key=").append(appKey);
+
+        if(keyword != null && !keyword.isEmpty()){
+
+            url.append("&what=").append(keyword);
+
+        }
+
+        if(location != null && !location.isEmpty()){
+
+            url.append("&where=").append(location);
+
+        }
+
+        if(category != null && !category.isEmpty()){
+
+            url.append("&category=").append(category);
+
+        }
+
+        if(salary != null){
+
+            url.append("&salary_min=").append(salary);
+
+        }
+
+        return restTemplate.getForObject(
+                url.toString(),
+                String.class
+        );
+
     }
+
+
 }
