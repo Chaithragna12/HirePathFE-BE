@@ -1,0 +1,22 @@
+.applications-page {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.applications-page h1 {
+    margin-bottom: 25px;
+}
+
+.application-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media screen and (max-width:768px) {
+
+    .application-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
