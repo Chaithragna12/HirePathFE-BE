@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ApplicationCard from "../components/ApplicationCard";
 import EmptyState from "../components/EmptyState";
 import api from "../services/api";
-import "./Applications.css";
+import "./Application.css";
 
 const Applications = () => {
 

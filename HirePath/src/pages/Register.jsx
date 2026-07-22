@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
-import "../styles.css";
+// import "../styles.css";
+import "../pages/styles.css";
 
 function Register(){
 

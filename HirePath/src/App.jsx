@@ -6,12 +6,12 @@ import Hero from "./components/Hero";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import Jobs from "./pages/Jobs";
-// import SavedJobs from "./pages/SavedJobs";
-// import Applications from "./pages/Applications";
+import Jobs from "./pages/Jobs";
+import SavedJobs from "./pages/SavedJobs";
+import Applications from "./pages/Application";
 import Profile from "./pages/Profile.jsx";
-import About from "./pages/About.jsx/index.js";
-import Contact from "./pages/Contact.jsx/index.js";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
 
 function App() {
   return (
@@ -20,17 +20,17 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/savedJobs" element={<SavedJobs />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
