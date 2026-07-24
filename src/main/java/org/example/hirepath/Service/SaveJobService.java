@@ -25,8 +25,14 @@ public class SaveJobService {
     // Delete Saved Job
     public String deleteSavedJob(Long id) {
 
-        savedJobRepository.deleteByJobId(id);
+        if (savedJobRepository.existsById(id)) {
 
-        return "Saved Job Deleted Successfully";
+            savedJobRepository.deleteById(id);
+
+            return "Job Deleted Successfully";
+
+        }
+
+        return "Job Not Found";
     }
 }

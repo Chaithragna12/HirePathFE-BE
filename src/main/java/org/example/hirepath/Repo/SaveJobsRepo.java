@@ -8,5 +8,5 @@ import java.util.List;
 public interface SaveJobsRepo extends JpaRepository<SaveJobsEntity,Long> {
     List<SaveJobsEntity> findByUserId(Long userId);
 
-    void deleteByJobId(Long id);
+//    void deleteByJobId(Long id);
 }

@@ -20,11 +20,23 @@ public class UserService {
         }
         return null;
     }
-    public UserEntity userLogin(UserEntity u){
-        UserEntity existing=repo.findByemail(u.getEmail());
-        if(existing!=null && u.getPassword().equals(existing.getPassword())){
-            return existing;
+    public UserEntity userLogin(UserEntity u) {
+
+//        System.out.println("Email: " + u.getEmail());
+
+        UserEntity existing = repo.findByemail(u.getEmail());
+
+//        System.out.println("Found User: " + existing);
+
+        if (existing != null) {
+            System.out.println("Password Match: " +
+                    u.getPassword().equals(existing.getPassword()));
+
+            if (u.getPassword().equals(existing.getPassword())) {
+                return existing;
+            }
         }
+
         return null;
     }
 }
