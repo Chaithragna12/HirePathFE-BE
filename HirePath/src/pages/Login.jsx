@@ -1,83 +1,109 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../services/api";
-import "../pages/styles.css";
+import { loginUser } from "../services/userService";
+import "./Login.css";
 
-function Login(){
+function Login() {
+    const navigate = useNavigate();
 
-    const navigate=useNavigate();
-
-    const[loginData,setLoginData]=useState({
-        email:"",
-        password:""
+    const [loginData, setLoginData] = useState({
+        email: "",
+        password: ""
     });
 
-    const handleChange=(e)=>{
+    const handleChange = (e) => {
         setLoginData({
             ...loginData,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit=async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try{
+        console.log("Form Submitted");
 
-            await api.post("/users/login",loginData);
+        if (!loginData.email.trim() || !loginData.password.trim()) {
+            alert("Email and Password are required");
+            return;
+        }
+
+        try {
+            console.log("Sending Login Request...");
+
+            const response = await loginUser(loginData);
+
+            console.log("Full Response:", response);
+            console.log("Response Data:", response.data);
+
+            // If backend returns null or empty
+            if (!response.data) {
+                alert("Invalid Email or Password");
+                return;
+            }
+
+            localStorage.setItem("token", "loggedin");
 
             alert("Login Successful");
 
             navigate("/");
+            window.location.reload();
 
-        }
-        catch(error){
+        } catch (error) {
+            console.error("Login Error:", error);
+
+            if (error.response) {
+                console.log("Status:", error.response.status);
+                console.log("Error Data:", error.response.data);
+            }
+
             alert("Invalid Email or Password");
         }
     };
 
-    return(
+    return (
+        <div className="login-container">
 
-        <div className="form-container">
-
-            <h2>Login</h2>
+            <h2 className="login-title">Login</h2>
 
             <form onSubmit={handleSubmit}>
 
-                <div className="form-group">
+                <div className="login-group">
                     <input
+                        className="login-input"
                         type="email"
                         name="email"
                         placeholder="Email"
                         value={loginData.email}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="login-group">
                     <input
+                        className="login-input"
                         type="password"
                         name="password"
                         placeholder="Password"
                         value={loginData.password}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 
-                <button className="btn login-btn">
+                <button type="submit" className="login-btn">
                     Login
                 </button>
 
             </form>
 
-            <div className="link">
+            <div className="login-link">
                 <Link to="/register">Create Account</Link>
             </div>
 
         </div>
-
     );
-
 }
 
 export default Login;

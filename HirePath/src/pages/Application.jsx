@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ApplicationCard from "../components/ApplicationCard";
 import EmptyState from "../components/EmptyState";
-import api from "../services/api";
+import {getApplicationss} from "../services/applicationService";
 import "./Application.css";
 
 const Applications = () => {
@@ -10,7 +10,7 @@ const Applications = () => {
 
   const getApplications = async () => {
     try {
-      const response = await api.get("/applications/1");
+      const response = await getApplicationss(1);
       setApplications(response.data);
     } catch (error) {
       console.log(error);

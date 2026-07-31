@@ -21,7 +21,6 @@ const Jobs = () => {
           location,
         },
       });
-
       setJobs(response.data.results || []);
     } catch (error) {
       console.log(error);
@@ -53,7 +52,7 @@ const Jobs = () => {
 
   const saveJob = async (job) => {
     try {
-      await api.post("/savedJobs", {
+      await api.post("/saveJob", {
         userId: 1,
         jobId: job.id,
         jobTitle: job.title,
@@ -68,6 +67,23 @@ const Jobs = () => {
       alert("Unable to Save Job");
     }
   };
+const trackApplication = async (job) => {
+  try {
+    await api.post("/addApplication", {
+      userId: 1,
+      jobId: job.id,
+      jobTitle: job.title,
+      company: job.company.display_name,
+      status: "Applied",
+      appliedDate: new Date().toISOString().split("T")[0],
+    });
+
+    alert("Application Tracked Successfully");
+  } catch (error) {
+    console.log(error);
+    alert("Unable to Track Application");
+  }
+};
 
   return (
     <div className="jobs-page">
@@ -88,10 +104,11 @@ const Jobs = () => {
           <div className="job-grid">
             {jobs.map((job) => (
               <JobCard
-                key={job.id}
-                job={job}
-                onSave={saveJob}
-              />
+    key={job.id}
+    job={job}
+    onSave={saveJob}
+    onTrack={trackApplication}
+/>
             ))}
           </div>
         </div>

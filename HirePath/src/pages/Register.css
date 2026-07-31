@@ -1,0 +1,68 @@
+/* Register Page */
+
+.register-container{
+    width:100%;
+    max-width:450px;
+    margin:50px auto;
+    padding:40px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.register-container h2{
+    text-align:center;
+    color:#16a34a;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+.register-group{
+    margin-bottom:20px;
+}
+
+.register-group input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.register-group input:focus{
+    border-color:#16a34a;
+    box-shadow:0 0 5px rgba(22,163,74,.3);
+}
+
+.register-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.register-btn:hover{
+    background:#15803d;
+}
+
+.register-link{
+    margin-top:20px;
+    text-align:center;
+}
+
+.register-link a{
+    text-decoration:none;
+    color:#16a34a;
+    font-weight:600;
+}
+
+.register-link a:hover{
+    text-decoration:underline;
+}
